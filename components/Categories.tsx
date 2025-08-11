@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { categories } from '@/data/products'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 export default function Categories() {
   return (
@@ -37,7 +38,7 @@ export default function Categories() {
               whileHover={{ y: -8, scale: 1.02 }}
               className="group cursor-pointer"
             >
-              <div className={`${category.color} rounded-2xl p-6 text-center transition-all duration-300 group-hover:shadow-lg`}>
+              <Link href={`/category/${category.id}`} className={`${category.color} rounded-2xl p-6 text-center transition-all duration-300 group-hover:shadow-lg block`}>
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {category.icon}
                 </div>
@@ -48,7 +49,7 @@ export default function Categories() {
                   <span>Explore</span>
                   <ArrowRightIcon className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -61,10 +62,10 @@ export default function Categories() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="btn-outline text-lg px-8 py-3 group">
+          <Link href="/category" className="btn-outline text-lg px-8 py-3 inline-flex items-center group">
             View All Categories
             <ArrowRightIcon className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>

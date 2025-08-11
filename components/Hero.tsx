@@ -3,6 +3,11 @@
 import { ArrowRightIcon, TruckIcon, ClockIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
 
 export default function Hero() {
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <section className="relative bg-gradient-to-br from-primary-50 to-secondary-50 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
@@ -20,11 +25,17 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="btn-primary text-lg px-8 py-3 flex items-center justify-center group">
+              <button
+                onClick={() => scrollToSection('deals')}
+                className="btn-primary text-lg px-8 py-3 flex items-center justify-center group"
+              >
                 Shop Now
                 <ArrowRightIcon className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="btn-outline text-lg px-8 py-3">
+              <button
+                onClick={() => scrollToSection('categories')}
+                className="btn-outline text-lg px-8 py-3"
+              >
                 View Categories
               </button>
             </div>

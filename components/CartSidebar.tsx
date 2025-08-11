@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { XMarkIcon, TrashIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { useCartStore, CartItem } from '@/store/cartStore'
 import toast from 'react-hot-toast'
+import { formatCurrencyINR } from '@/utils/currency'
 
 interface CartSidebarProps {
   isOpen: boolean
@@ -110,7 +111,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                           {item.name}
                         </h3>
                         <p className="text-sm text-gray-500">
-                          ${item.price.toFixed(2)}
+                          {formatCurrencyINR(item.price)}
                         </p>
                       </div>
 
@@ -153,7 +154,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-medium text-gray-900">Total:</span>
                   <span className="text-2xl font-bold text-primary-600">
-                    ${getTotal().toFixed(2)}
+                    {formatCurrencyINR(getTotal())}
                   </span>
                 </div>
 

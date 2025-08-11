@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { getFeaturedProducts, Product } from '@/data/products'
 import { useCartStore } from '@/store/cartStore'
 import toast from 'react-hot-toast'
+import { formatCurrencyINR } from '@/utils/currency'
 
 export default function FeaturedProducts() {
   const [favorites, setFavorites] = useState<Set<string>>(new Set())
@@ -129,7 +130,7 @@ export default function FeaturedProducts() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <span className="text-lg font-bold text-gray-900">
-                      ${product.price.toFixed(2)}
+                      {formatCurrencyINR(product.price)}
                     </span>
                     <span className="text-sm text-gray-500 ml-1">
                       {product.unit}
